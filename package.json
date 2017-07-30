@@ -1,0 +1,15 @@
+{
+  "name": "tg",
+  "version": "1.0.0",
+  "description": "",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "'",
+  "license": "ISC",
+  "devDependencies": {
+    "uglifyjs-webpack-plugin": "^1.0.0-beta.2",
+    "webpack": "^3.4.1"
+  }
+}

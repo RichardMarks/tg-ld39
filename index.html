@@ -1,0 +1,123 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf=8">
+  <title>The Generators :: Running Out Of Power</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class='title-scene'>
+    <h1>The Generators :: Running Out Of Power</h1>
+    <h3>LD39 Version - Developed in the last 5 hours of the compo timeframe</h3>
+    <h4>Designed & Developed by Richard <sup>&quot;Rambling Indie&quot;</sup> Marks</h4>
+    <div>
+      <button class='btn btn-play-game'>Play Game</button>
+      <button class='btn btn-view-tutorial'>View Tutorial</button>
+    </div>
+  </div>
+
+  <div class='tutorial-scene'>
+    <div>
+      <h2>Tutorial</h2>
+      <p>Welcome to The Generators.</p>
+      <p>The power is out in the underground maintenance facility Axiga-9. You will need to enter manual override codes into
+        the substation control panels by flipping switches to match each manual override code for each generator.</p>
+      <p>Each manual override code is given in pairs of hexadecimal values such as DA C3</p>
+      <p>Each switch represents a numerical value that is twice the value of the switch to it's right.</p>
+      <p>The switch to the far right has a value of one.</p>
+      <p>Flip switches to match the switch value with the value of the manual override code to power up the generator and move
+        on to the next.</p>
+      <p>If you enter a code incorrectly, you will trigger an error. There are only so many errors until you break the system
+        and the game is over.</p>
+      <p>Let's check out how this works:</p>
+      <div>
+        <p>The first pair in the manual override code is DA. This has a value of 218. You need to flip the switches to make
+          the power value equal 218.
+        </p>
+        <p>Switch positions are numbered 1 to 8 from left to right</p>
+        <p>Flip switch at position 1 to send 128 units of power to the generator.</p>
+        <p>We need a total of 218 unit of power. We have 128 with the first switch flipped.</p>
+        <p>Now subtract 128 from 218 and we get 90. So we need to flip the switch with the largest value that is less than or
+          equal to 90.</p>
+        <p>Remember that each switch has twice the value of the switch to it's right. We flipped the switch at position 1 and
+          we got 128 units of power. So logical reasoning tells us that the switch at position 2 has a value that is half
+          of position 1. So the switch at position 2 has a value of 64. 64 is less than 90, so flip it.</p>
+        <p>By flipping switch 2, we now have 2 switches flipped which sends 192 units of power to the generator. We need 218
+          units of power.</p>
+        <p>Subtract 192 from 218 and we get 26. Using what we have learned, we can find the values of the switches we need to
+          flip to send our needed 218 units of power to the generator.</p>
+        <p>Switch at position 3 has a value half of switch at position 2, so that is 32 units of power which is too much since
+          we only need 26. So we do not flip switch 3.</p>
+        <p>Switch number 4 has a value of 16 and that is less than 26, so let's flip that one now and send a total of 208 units
+          of power to the generator.</p>
+        <p>Almost there. Subtract 208 from 218 and we get 10.</p>
+        <p>The next switch has a value of 8, and that is less than 10. We need to flip it.</p>
+        <p>We now have 216 units of power, and need 218. The last switch to flip is switch number 7 with a value of 2.</p>
+        <p>If you were paying attention, you should have 5 switches flipped.</p>
+        <ul>
+          <li>1 - sends 128 units of power</li>
+          <li>2 - sends 64 units of power</li>
+          <li>4 - sends 16 units of power</li>
+          <li>5 - sends 8 units of power</li>
+          <li>7 - sends 2 units of power</li>
+        </ul>
+        <p>128 + 64 + 16 + 8 + 2 = 218 units of power.</p>
+        <p>And that is all there is to it! Go power those generators!</p>
+      </div>
+    </div>
+    <button class='btn btn-back'>Back</button>
+  </div>
+
+  <div class='game-over-scene'>
+    <div>
+      <h1>Game Over</h1>
+    </div>
+    <div>Generators Powered: <span class='generators-powered'>0</span></div>
+    <div>Final Score: <span class='final-score'>0</span></div>
+    <button class='btn btn-play-again'>Play Again</button>
+    <button class='btn btn-exit'>Exit</button>
+  </div>
+
+  <div class='game-scene'>
+    <div>
+      Generator #<span class='current-generator'>1</span> Manual Overide Code: <span class='current-override-code'>DA C3 42 B1</span>
+    </div>
+    <div>
+      Codes Entered: <span class='codes-entered'>0</span> / <span class='codes-needed'>4</span>
+    </div>
+
+    <div>
+      Target: <span class='current-target'>DA</span>
+      <div>
+        <input type="checkbox" class='switch switch-128' data-val='128' />
+        <input type="checkbox" class='switch switch-64' data-val='64' />
+        <input type="checkbox" class='switch switch-32' data-val='32' />
+        <input type="checkbox" class='switch switch-16' data-val='16' />
+        <input type="checkbox" class='switch switch-8' data-val='8' />
+        <input type="checkbox" class='switch switch-4' data-val='4' />
+        <input type="checkbox" class='switch switch-2' data-val='2' />
+        <input type="checkbox" class='switch switch-1' data-val='1' /> T <span class='entry-total'>0</span>
+      </div>
+      <div>Errors: <span class='error-count'>0</span> / <span class='max-error-count'>4</span></div>
+      <div>
+        <button class='btn btn-enter-code'>Enter Code</button>
+        <button class='btn btn-quit'>Quit</button>
+      </div>
+    </div>
+  </div>
+  <script src="main.js"></script>
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-102518247-2', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+
+</html>
